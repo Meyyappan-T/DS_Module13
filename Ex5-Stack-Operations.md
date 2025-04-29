@@ -17,20 +17,31 @@ Program to find and display the priority of the operator in the given Postfix ex
 Developed by: Meyyappan T
 RegisterNumber: 212223240086 
 */
-#include<stdio.h>
+#include <stdio.h>
 
-char stack[100];
+#define SIZE 100
+
+char stack[SIZE];
 int top = -1;
 
-void push(char x)
-{
-   stack[++top]=x;
+// Push an element onto the stack
+void push(char x) {
+    if (top == SIZE - 1) {
+        printf("Stack Overflow\n");
+        return;
+    }
+    stack[++top] = x;
 }
 
-char pop()
-{
-   return stack[top--];
+// Pop an element from the stack
+char pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
+        return -1;  // Error value
+    }
+    return stack[top--];
 }
+
 
 ```
 
